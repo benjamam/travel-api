@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+const suggestionData_1 = require("../suggestions/suggestionData");
 module.exports = function (app, db) {
-    app.post('/place', (req, res) => {
+    app.post('/place/different', (req, res) => {
         console.log('body', req.body);
-        let suggestion = {
-            fullName: 'Cleveland, OH, USA',
-            city: 'Cleveland',
-            coordinates: {
-                lattitude: 41.49932,
-                longitude: -81.6943605
-            }
-        };
+        let suggestion = suggestionData_1.Suggestions[1];
+        console.log('suggestion', suggestion);
+        res.send(suggestion);
+    });
+    app.post('/place/similar', (req, res) => {
+        console.log('body', req.body);
+        let suggestion = suggestionData_1.Suggestions[0];
         console.log('suggestion', suggestion);
         res.send(suggestion);
     });
